@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Malla Curricular</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { color: #007acc; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    .details { display: none; text-align: left; background: #f9f9f9; padding: 10px; }
+    button { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Mecánica Automotriz</h1>
+  <table>
+    <tr>
+      <th>Semestre</th>
+      <th>Asignatura</th>
+      <th>Acción</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Fundamentos del Motor</td>
+      <td><button onclick="toggle('m1')">Ver Temario</button></td>
+    </tr>
+    <tr id="m1" class="details">
+      <td colspan="3">
+        - Tipos de motores<br>
+        - Principio de combustión interna<br>
+        - Ciclo Otto y Diesel
+      </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Electricidad Automotriz</td>
+      <td><button onclick="toggle('m2')">Ver Temario</button></td>
+    </tr>
+    <tr id="m2" class="details">
+      <td colspan="3">
+        - Circuitos básicos<br>
+        - Multímetro y diagnóstico<br>
+        - Baterías y alternadores
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    function toggle(id) {
+      var row = document.getElementById(id);
+      row.style.display = row.style.display === 'table-row' ? 'none' : 'table-row';
+    }
+  </script>
+</body>
+</html>
