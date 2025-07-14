@@ -96,3 +96,163 @@
   </script>
 </body>
 </html>
+  <!-- SEMESTRE 1 -->
+  <div class="semester">
+    <h2>Semestre 1</h2>
+    <div class="courses">
+      <div class="course">Matemáticas</div>
+      <div class="course">Biología Celular</div>
+      <div class="course">Química General y Orgánica</div>
+      <div class="course">Morfología</div>
+      <div class="course">Inglés I</div>
+      <div class="course">Introducción a la Nutrición</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 2 -->
+  <div class="semester">
+    <h2>Semestre 2</h2>
+    <div class="courses">
+      <div class="course">Morfología II</div>
+      <div class="course">Nutrición Humana</div>
+      <div class="course">Bioética</div>
+      <div class="course">Bioquímica</div>
+      <div class="course">Inglés aplicado a la Nutrición I</div>
+      <div class="course">Optativo I</div>
+      <div class="course">Práctica de Observación</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 3 -->
+  <div class="semester">
+    <h2>Semestre 3</h2>
+    <div class="courses">
+      <div class="course">Microbiología y Parasitología de los Alimentos</div>
+      <div class="course">Evaluación Nutricional en el Ciclo Vital I</div>
+      <div class="course">Higiene y Control de los Alimentos</div>
+      <div class="course">Fisiología</div>
+      <div class="course">Inglés aplicado a la Nutrición II</div>
+      <div class="course">Valoración Biológica de la Condición Física de la Salud</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 4 -->
+  <div class="semester">
+    <h2>Semestre 4</h2>
+    <div class="courses">
+      <div class="course">Psicología Nutricional</div>
+      <div class="course">Evaluación Nutricional en el Ciclo Vital II</div>
+      <div class="course">Técnicas Dietéticas</div>
+      <div class="course">Fisiopatología I</div>
+      <div class="course">Salud Pública y Comunitaria</div>
+      <div class="course">Educación y Promoción en Salud</div>
+      <div class="course">Envejecimiento Activo en el Ciclo Vital</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 5 -->
+  <div class="semester">
+    <h2>Semestre 5</h2>
+    <div class="courses">
+      <div class="course">Nutrición Materno Infantil</div>
+      <div class="course">Planificación Alimentaria</div>
+      <div class="course">Bromatología</div>
+      <div class="course">Fisiopatología II</div>
+      <div class="course">Farmacología en Nutrición</div>
+      <div class="course">Epidemiología</div>
+      <div class="course">Práctica Intermedia I</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 6 -->
+  <div class="semester">
+    <h2>Semestre 6</h2>
+    <div class="courses">
+      <div class="course">Nutrición Clínica Pediátrica y Adolescente</div>
+      <div class="course">Tecnología de los Alimentos y Evaluación Sensorial</div>
+      <div class="course">Nutrición Clínica Adulto y Adulto Mayor</div>
+      <div class="course">Bioestadística</div>
+      <div class="course">Enfermedades Crónicas no Transmisibles de Origen Nutricional</div>
+      <div class="course">Fundamentos para la Investigación en Salud</div>
+      <div class="course">Práctica Intermedia II</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 7 -->
+  <div class="semester">
+    <h2>Semestre 7</h2>
+    <div class="courses">
+      <div class="course">Metodología de la Investigación</div>
+      <div class="course">Administración General y Servicios de Alimentación</div>
+      <div class="course">Gestión de Calidad en Servicios de Alimentación</div>
+      <div class="course">Electivo I</div>
+      <div class="course">Enfermedades Metabólicas y Ejercicio</div>
+      <div class="course">Integración en Nutrición</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 8 -->
+  <div class="semester">
+    <h2>Semestre 8</h2>
+    <div class="courses">
+      <div class="course">Nutrición y Enfermedades Metabólicas</div>
+      <div class="course">Proyecto de Tesis</div>
+      <div class="course">Diseño de Proyectos en Comunidad</div>
+      <div class="course">Electivo II</div>
+      <div class="course">Nutrición y Deporte</div>
+      <div class="course">Práctica Intermedia III</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 9 -->
+  <div class="semester">
+    <h2>Semestre 9</h2>
+    <div class="courses">
+      <div class="course">Práctica Profesional Área Clínica</div>
+      <div class="course">Práctica Profesional Área Alimentación Colectiva</div>
+    </div>
+  </div>
+
+  <!-- SEMESTRE 10 -->
+  <div class="semester">
+    <h2>Semestre 10</h2>
+    <div class="courses">
+      <div class="course">Práctica Profesional Área Atención Primaria</div>
+      <div class="course">Proyecto de Intervención Disciplinar</div>
+    </div>
+  </div>
+
+  <button class="reset-btn" onclick="resetProgress()">Restablecer progreso</button>
+</div>
+<script>
+  // Guardar estado en localStorage
+  const courses = document.querySelectorAll('.course');
+  const saved = JSON.parse(localStorage.getItem('completedCourses')) || [];
+
+  courses.forEach((course, i) => {
+    if (saved.includes(i)) {
+      course.classList.add('completed');
+    }
+    course.addEventListener('click', () => {
+      course.classList.toggle('completed');
+      updateStorage();
+    });
+  });
+
+  function updateStorage() {
+    const states = [];
+    courses.forEach((course, i) => {
+      if (course.classList.contains('completed')) {
+        states.push(i);
+      }
+    });
+    localStorage.setItem('completedCourses', JSON.stringify(states));
+  }
+
+  function resetProgress() {
+    localStorage.removeItem('completedCourses');
+    courses.forEach(c => c.classList.remove('completed'));
+  }
+</script>
+</body>
+</html>
